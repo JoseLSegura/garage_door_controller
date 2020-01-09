@@ -1,0 +1,4 @@
+Python package including several classes to control a garage door with
+a 2 direction motor and an electric lock.
+
+This classes are based on gpiozero API
