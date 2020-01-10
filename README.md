@@ -8,17 +8,17 @@
 
 At the end of the year 2019, I was messing around with my garage door controller board, trying to discover if it was
 possible to control it as any other IoT device. While I was trying to figure out how to send some commands thought
-an Ethernet port in the board, a power supply disruption occurs, braking the old board.
+an Ethernet port in the board, a power supply disruption occurred, breaking the old board.
 
-As I had an old and forgotten Raspberry Pi stored, I took it and start to mess around with its GPIO port, learning some
-libraries and commands to control it...
+As I had an old and forgotten Raspberry Pi stored, I took it and started to messing around with its GPIO port, learning
+some libraries and commands to control it...
 
 And here is the result.
 
 ## Which does this package intend?
 
-The main objective of this package is provide a set of classes needed to control the different door mechanism devices
-(mainly an electric lock and the motor), both individually and as a composited device.
+The main objective of this package is provide a set of classes needed to control the different devices of my door
+mechanism (mainly an electric lock and the motor), both individually and as a composited device.
 
 I will be using [`gpiozero`](gpiozero.readthedocs.io/) as a base, extending and using it to create my own device
 classes
