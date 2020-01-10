@@ -1,4 +1,3 @@
-import time
 from unittest import TestCase
 from unittest.mock import patch
 
@@ -24,7 +23,7 @@ class MotorTestCase(TestCase):
 
     @patch('time.sleep', lambda _: None)
     def test_open(self):
-        self.sut.open()
+        self.sut.open_door()
         self.mock_open_pin.assert_states([True, False, True])
         self.assertEqual(len(self.mock_open_pin.states), 3)
         self.mock_close_pin.assert_states([True])

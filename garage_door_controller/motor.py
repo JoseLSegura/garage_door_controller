@@ -14,14 +14,14 @@ class Motor(CompositeDevice):
 
         super().__init__(self.open_door_relay, self.close_door_relay)
 
-    def open(self):
+    def open_door(self):
         self.close_door_relay.off()
         time.sleep(1)
         self.open_door_relay.on()
         time.sleep(Motor.TIME_TO_STOP)
         self.open_door_relay.off()
 
-    def close(self):
+    def close_door(self):
         self.open_door_relay.off()
         time.sleep(1)
         self.close_door_relay.on()
