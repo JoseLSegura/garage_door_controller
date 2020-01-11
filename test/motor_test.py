@@ -1,10 +1,11 @@
-from unittest import TestCase
 from unittest.mock import patch
 
 from gpiozero import Device
 from gpiozero.pins.mock import MockFactory, MockPin
 
 from garage_door_controller import Motor
+
+from . import TestCase
 
 
 Device.pin_factory = MockFactory(pin_class=MockPin)
@@ -24,15 +25,11 @@ class MotorTestCase(TestCase):
     @patch('time.sleep', lambda _: None)
     def test_open(self):
         self.sut.open_door()
-        self.mock_open_pin.assert_states([True, False, True])
-        self.assertEqual(len(self.mock_open_pin.states), 3)
-        self.mock_close_pin.assert_states([True])
-        self.assertEqual(len(self.mock_close_pin.states), 1)
+        self.assertPinStates(self.mock_open_pin, [True, False, True])
+        self.assertPinStates(self.mock_close_pin, [True])
 
     @patch('time.sleep', lambda _: None)
     def test_close(self):
         self.sut.close_door()
-        self.mock_open_pin.assert_states([True])
-        self.mock_close_pin.assert_states([True, False, True])
-        self.assertEqual(len(self.mock_close_pin.states), 3)
-        self.assertEqual(len(self.mock_open_pin.states), 1)
+        self.assertPinStates(self.mock_open_pin, [True])
+        self.assertPinStates(self.mock_close_pin, [True, False, True])
