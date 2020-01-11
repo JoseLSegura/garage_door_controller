@@ -28,3 +28,11 @@ class MotorTestCase(TestCase):
         self.assertEqual(len(self.mock_open_pin.states), 3)
         self.mock_close_pin.assert_states([True])
         self.assertEqual(len(self.mock_close_pin.states), 1)
+
+    @patch('time.sleep', lambda _: None)
+    def test_close(self):
+        self.sut.close_door()
+        self.mock_open_pin.assert_states([True])
+        self.mock_close_pin.assert_states([True, False, True])
+        self.assertEqual(len(self.mock_close_pin.states), 3)
+        self.assertEqual(len(self.mock_open_pin.states), 1)
