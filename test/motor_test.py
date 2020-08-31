@@ -13,7 +13,7 @@ Device.pin_factory = MockFactory(pin_class=MockPin)
 
 class MotorTestCase(TestCase):
     def setUp(self):
-        self.sut = Motor(5, 6)
+        self.sut = Motor(5, 6, 1.0, 1.0)
         self.mock_open_pin = self.sut[0].pin
         self.mock_close_pin = self.sut[1].pin
         self.mock_open_pin.clear_states()
