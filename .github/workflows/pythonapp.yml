@@ -21,13 +21,13 @@ jobs:
         pip install .[dev]
     - name: Lint with flake8
       run: flake8 . --count --max-complexity=10 --max-line-length=127 --statistics
-    - name: Lint with pylint
-      run: pylint
+    # - name: Lint with pylint
+    #   run: pylint garage_door_controller test
     - name: Test with pytest
       run: |
         pytest
-    - name: Doc style
-      run: pydocstyle
+    # - name: Doc style
+    #   run: pydocstyle
 
   dist:
     runs-on: ubuntu-latest
