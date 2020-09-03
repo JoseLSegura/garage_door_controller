@@ -28,30 +28,3 @@ jobs:
         pytest
     # - name: Doc style
     #   run: pydocstyle
-
-  dist:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: [3.7, 3.8]
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v2
-      with:
-        python-version: ${{ matrix.python-version }}
-    - name: Install dependencies
-      run: |
-        pip install -U pip setuptools wheel
-        pip install -e .[dev]
-    - name: Build dists for Python ${{ matrix.python-version }}
-      run: |
-        python setup.py sdist
-        python setup.py bdist_wheel
-    - name: Publish
-      uses: actions/upload-artifact@v2
-      with:
-        name: Distribution files
-        path: dist/
-      
